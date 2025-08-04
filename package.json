@@ -12,6 +12,11 @@
     "prettier": "prettier --write */**/*.{js,jsx,json,ts,tsx,scss,css,md}",
     "prepare": "husky install"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "dependencies": {
     "@tanstack/react-query": "^5.84.1",
     "@typescript-eslint/eslint-plugin": "^8.38.0",
