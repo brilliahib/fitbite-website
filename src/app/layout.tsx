@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Figtree, Paytone_One } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/organisms/navbar/Navbar";
 import GlobalProvider from "@/components/organisms/GlobalProvider";
 
 const paytoneOne = Paytone_One({
@@ -31,10 +30,7 @@ export default function RootLayout({
       <body
         className={`${figtree.variable} ${paytoneOne.variable} antialiased`}
       >
-        <GlobalProvider>
-          <Navbar />
-          {children}
-        </GlobalProvider>
+        <GlobalProvider>{children}</GlobalProvider>
       </body>
     </html>
   );
