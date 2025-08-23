@@ -31,6 +31,11 @@ import {
   Users,
   CircleHelp,
   UserRoundSearch,
+  Camera,
+  Flame,
+  Beef,
+  BookText,
+  Dumbbell,
 } from "lucide-react";
 import { NavUser } from "./NavUser";
 
@@ -71,7 +76,7 @@ export function AppSidebar({ session }: AppSidebarProps) {
 
       <SidebarContent className="bg-white dark:bg-slate-950">
         <SidebarGroup>
-          <SidebarGroupLabel>Beranda</SidebarGroupLabel>
+          <SidebarGroupLabel>Dashboard</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
@@ -97,7 +102,7 @@ export function AppSidebar({ session }: AppSidebarProps) {
                     <span>
                       {session?.user.role === "admin"
                         ? "Dashboard Admin"
-                        : "Beranda"}
+                        : "Dashboard"}
                     </span>
                   </Link>
                 </SidebarMenuButton>
@@ -118,22 +123,33 @@ export function AppSidebar({ session }: AppSidebarProps) {
                       <SidebarMenuItem>
                         <SidebarMenuButton
                           asChild
-                          className={buttonClass("/dashboard/screening")}
+                          className={buttonClass("/dashboard/scan")}
                         >
-                          <Link href="/dashboard/screening">
-                            <Search />
-                            <span>Screening</span>
+                          <Link href="/dashboard/scan">
+                            <Camera />
+                            <span>Scan Makanan</span>
                           </Link>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
                       <SidebarMenuItem>
                         <SidebarMenuButton
                           asChild
-                          className={buttonClass("/dashboard/modules")}
+                          className={buttonClass("/dashboard/calories")}
                         >
-                          <Link href="/dashboard/modules">
-                            <NotebookText />
-                            <span>Modul Materi</span>
+                          <Link href="/dashboard/calories">
+                            <Flame />
+                            <span>Kalori Harian</span>
+                          </Link>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                      <SidebarMenuItem>
+                        <SidebarMenuButton
+                          asChild
+                          className={buttonClass("/dashboard/check-obesity")}
+                        >
+                          <Link href="/dashboard/check-obesity">
+                            <Dumbbell />
+                            <span>Cek Obesitas</span>
                           </Link>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
@@ -329,22 +345,22 @@ export function AppSidebar({ session }: AppSidebarProps) {
                 <SidebarMenuItem>
                   <SidebarMenuButton
                     asChild
-                    className={buttonClass("/dashboard/general")}
+                    className={buttonClass("/dashboard/food-menu")}
                   >
-                    <Link href="/dashboard/general">
-                      <Book />
-                      <span>Penjelasan Umum</span>
+                    <Link href="/dashboard/food-menu">
+                      <Beef />
+                      <span>Menu Makanan</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
                   <SidebarMenuButton
                     asChild
-                    className={buttonClass("/dashboard/history")}
+                    className={buttonClass("/dashboard/blogs")}
                   >
-                    <Link href="/dashboard/history">
-                      <History />
-                      <span>Riwayat</span>
+                    <Link href="/dashboard/blogs">
+                      <BookText />
+                      <span>Artikel</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>

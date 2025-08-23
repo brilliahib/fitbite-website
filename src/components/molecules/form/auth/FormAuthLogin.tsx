@@ -24,7 +24,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { Eye, EyeOff } from "lucide-react";
 
@@ -36,8 +36,6 @@ export default function FormAuthLogin() {
     mode: "onChange",
   });
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("callbackUrl") || "/dashboard";
   const [showPassword, setShowPassword] = useState(false);
 
   const onSubmit = async (body: LoginType) => {
@@ -59,7 +57,7 @@ export default function FormAuthLogin() {
       description: "Anda akan diarahkan menuju halaman dashboard",
     });
 
-    router.push(callbackUrl);
+    router.push("/dashboard");
   };
 
   return (
