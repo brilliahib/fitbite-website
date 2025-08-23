@@ -100,7 +100,7 @@ export default function FormAuthRegister() {
       toast.success("Berhasil Mendaftar", {
         description: "Anda akan otomatis masuk ke halaman dashboard",
       });
-      return router.push("/dashboard/programs");
+      return router.push("/dashboard");
     },
   });
 

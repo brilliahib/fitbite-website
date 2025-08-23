@@ -26,6 +26,7 @@ import {
 } from "@/validators/personal-information/personal-information-validator";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useQueryClient } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
@@ -43,6 +44,7 @@ export default function FormCreatePersonalInformation() {
   });
 
   const queryClient = useQueryClient();
+  const router = useRouter();
 
   const { mutate: createPersonalInformationHandlers, isPending } =
     useAddNewPersonalInformation({
@@ -54,6 +56,7 @@ export default function FormCreatePersonalInformation() {
         queryClient.invalidateQueries({
           queryKey: ["check-personal-information"],
         });
+        router.push("/dashboard");
       },
     });
 

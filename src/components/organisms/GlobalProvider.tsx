@@ -21,7 +21,7 @@ export default function GlobalProvider({ children }: PropsWithChildren) {
         <QueryClientProvider client={queryClient}>
           {children}
         </QueryClientProvider>
-        {mounted && <Toaster />}
+        {mounted && <Toaster position="top-right" />}
       </SessionProvider>
     </>
   );
