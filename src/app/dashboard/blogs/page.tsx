@@ -1,4 +1,5 @@
 import DashboardTitle from "@/components/atoms/typography/DashboardTitle";
+import DashboardBlogWrapper from "@/components/organisms/dashboard/blog/DashboardBlogWrapper";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -12,6 +13,7 @@ export default function DashboardBloPage() {
         head="Artikel Kesehatan"
         body="Baca artikel terbaru tentang kesehatan dan kebugaran."
       />
+      <DashboardBlogWrapper />
     </section>
   );
 }
