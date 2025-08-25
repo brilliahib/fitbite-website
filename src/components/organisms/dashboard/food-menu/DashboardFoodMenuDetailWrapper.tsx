@@ -1,6 +1,7 @@
 "use client";
 
 import DashboardTitle from "@/components/atoms/typography/DashboardTitle";
+import { Skeleton } from "@/components/ui/skeleton";
 import { useGetDetailFood } from "@/http/food/get-detail-food";
 import { buildFromAppURL } from "@/utils/misc";
 import { useSession } from "next-auth/react";
@@ -22,6 +23,26 @@ export default function DashboardFoodMenuDetailWrapper({
       enabled: status === "authenticated",
     },
   );
+
+  if (isPending) {
+    return (
+      <div>
+        <DashboardTitle
+          head="Detail Menu"
+          body="Menampilkan detail menu makanan"
+        />
+        <div className="space-y-6">
+          <Skeleton className="mx-auto h-[300px] w-full rounded-xl" />
+          <div className="space-y-2">
+            <Skeleton className="h-4 w-1/3" />
+            <Skeleton className="h-4 w-2/3" />
+            <Skeleton className="h-4 w-1/2" />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div>
       <DashboardTitle
