@@ -15,6 +15,7 @@ import { useDeleteCalories } from "@/http/calories/delete-calories";
 import { useGetAllCalories } from "@/http/calories/get-all-calories";
 import { Calories } from "@/types/calories/calories";
 import { useQueryClient } from "@tanstack/react-query";
+import { Plus } from "lucide-react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useState } from "react";
@@ -100,7 +101,11 @@ export default function DashboardCaloriesWrapper() {
               </p>
             </div>
             <Button asChild>
-              <Link href="/dashboard/calories/create">Tambah Aktivitas</Link>
+              <Link href="/dashboard/calories/create">
+                {" "}
+                <Plus />
+                Tambah Aktivitas
+              </Link>
             </Button>
           </div>
           <DataTable

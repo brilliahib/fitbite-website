@@ -1,6 +1,5 @@
 "use client";
 
-import DashboardTitle from "@/components/atoms/typography/DashboardTitle";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useGetDetailFood } from "@/http/food/get-detail-food";
 import { buildFromAppURL } from "@/utils/misc";
@@ -26,42 +25,33 @@ export default function DashboardFoodMenuDetailWrapper({
 
   if (isPending) {
     return (
-      <div>
-        <DashboardTitle
-          head="Detail Menu"
-          body="Menampilkan detail menu makanan"
-        />
-        <div className="space-y-6">
-          <Skeleton className="mx-auto h-[300px] w-full rounded-xl" />
-          <div className="space-y-2">
-            <Skeleton className="h-4 w-1/3" />
-            <Skeleton className="h-4 w-2/3" />
-            <Skeleton className="h-4 w-1/2" />
-          </div>
+      <div className="space-y-6">
+        <Skeleton className="mx-auto h-[300px] w-full rounded-xl" />
+        <Skeleton className="mx-auto h-8 w-1/3 rounded-md" />
+        <div className="space-y-2">
+          <Skeleton className="h-4 w-full" />
+          <Skeleton className="h-4 w-5/6" />
+          <Skeleton className="h-4 w-4/6" />
+          <Skeleton className="h-4 w-3/4" />
         </div>
       </div>
     );
   }
 
   return (
-    <div>
-      <DashboardTitle
-        head={data?.data.nama || "Detail Menu"}
-        body="Menampilkan detail menu makanan"
+    <div className="space-y-6">
+      <Image
+        src={buildFromAppURL(data?.data.image)}
+        alt={data?.data.nama ?? "Gambar gagal dimuat"}
+        width={1000}
+        height={1000}
+        className="mx-auto rounded-xl"
       />
-      <div className="space-y-6">
-        <Image
-          src={buildFromAppURL(data?.data.image)}
-          alt={data?.data.nama ?? "Gambar gagal dimuat"}
-          width={1000}
-          height={1000}
-          className="mx-auto rounded-xl"
-        />
-        <div
-          className="prose dark:prose-invert max-w-none"
-          dangerouslySetInnerHTML={{ __html: data?.data.ingredients ?? "" }}
-        />
-      </div>
+      <h1 className="font-paytone text-center text-4xl">{data?.data.nama}</h1>
+      <div
+        className="prose dark:prose-invert max-w-none"
+        dangerouslySetInnerHTML={{ __html: data?.data.ingredients ?? "" }}
+      />
     </div>
   );
 }
