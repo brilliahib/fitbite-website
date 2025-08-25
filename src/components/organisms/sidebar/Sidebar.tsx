@@ -35,7 +35,7 @@ import {
   Flame,
   Beef,
   BookText,
-  Dumbbell,
+  CalendarFold,
 } from "lucide-react";
 import { NavUser } from "./NavUser";
 
@@ -145,11 +145,11 @@ export function AppSidebar({ session }: AppSidebarProps) {
                       <SidebarMenuItem>
                         <SidebarMenuButton
                           asChild
-                          className={buttonClass("/dashboard/check-obesity")}
+                          className={buttonClass("/dashboard/plan")}
                         >
-                          <Link href="/dashboard/check-obesity">
-                            <Dumbbell />
-                            <span>Cek Obesitas</span>
+                          <Link href="/dashboard/plan">
+                            <CalendarFold />
+                            <span>Diet Plan</span>
                           </Link>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
