@@ -36,6 +36,7 @@ import {
   Beef,
   BookText,
   CalendarFold,
+  Dumbbell,
 } from "lucide-react";
 import { NavUser } from "./NavUser";
 
@@ -150,6 +151,17 @@ export function AppSidebar({ session }: AppSidebarProps) {
                           <Link href="/dashboard/plan">
                             <CalendarFold />
                             <span>Diet Plan</span>
+                          </Link>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                      <SidebarMenuItem>
+                        <SidebarMenuButton
+                          asChild
+                          className={buttonClass("/dashboard/progress")}
+                        >
+                          <Link href="/dashboard/progress">
+                            <Dumbbell />
+                            <span>Progress Mingguan</span>
                           </Link>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
@@ -292,50 +304,6 @@ export function AppSidebar({ session }: AppSidebarProps) {
           </>
         )}
 
-        {/* Medical personal groups */}
-        {session?.user.role === "medical_personal" && (
-          <>
-            <SidebarGroup>
-              <SidebarGroupLabel>Diskusi</SidebarGroupLabel>
-              <SidebarGroupContent>
-                <SidebarMenu>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton
-                      asChild
-                      className={
-                        pathname === "/dashboard/medical/discussions"
-                          ? "bg-primary/10 text-primary hover:bg-primary/10 hover:text-primary dark:bg-slate-800"
-                          : "hover:bg-primary/10 hover:text-primary dark:hover:bg-slate-900"
-                      }
-                    >
-                      <Link href="/dashboard/medical/discussions">
-                        <Users />
-                        <span>Forum Komunitas</span>
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-
-                  <SidebarMenuItem>
-                    <SidebarMenuButton
-                      asChild
-                      className={
-                        pathname === "/dashboard/medical/discussions/private"
-                          ? "bg-primary/10 text-primary hover:bg-primary/10 hover:text-primary dark:bg-slate-800"
-                          : "hover:bg-primary/10 hover:text-primary dark:hover:bg-slate-900"
-                      }
-                    >
-                      <Link href="/dashboard/medical/discussions/private">
-                        <UserRoundSearch />
-                        <span>Pertanyaan Private</span>
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                </SidebarMenu>
-              </SidebarGroupContent>
-            </SidebarGroup>
-          </>
-        )}
-
         {/* Untuk role user */}
         {session?.user.role === "user" && (
           <SidebarGroup>
@@ -371,15 +339,15 @@ export function AppSidebar({ session }: AppSidebarProps) {
 
         {session?.user.role === "user" && (
           <SidebarGroup>
-            <SidebarGroupLabel>Diskusi</SidebarGroupLabel>
+            <SidebarGroupLabel>Komunitas</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
                 <SidebarMenuItem>
                   <SidebarMenuButton
                     asChild
-                    className={buttonClass("/dashboard/discussions")}
+                    className={buttonClass("/dashboard/community")}
                   >
-                    <Link href="/dashboard/discussions">
+                    <Link href="/dashboard/community">
                       <Users />
                       <span>Forum Komunitas</span>
                     </Link>
