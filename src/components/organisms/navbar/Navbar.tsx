@@ -53,7 +53,7 @@ export default function Navbar() {
               <NavLink key={link.label} {...link} />
             ))}
           </nav>
-          <NavButton links={links} />
+          <NavButton />
         </div>
       </div>
     </>
