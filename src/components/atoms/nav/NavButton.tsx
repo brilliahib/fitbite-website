@@ -1,96 +1,131 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
-import { Link as NavbarLink } from "@/components/organisms/navbar/Navbar";
-import NavLink from "./NavLink";
-import { useSession } from "next-auth/react";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 
-interface NavHeaderProps {
-  links: NavbarLink[];
+function MobileLink({
+  href,
+  children,
+  icon: Icon,
+  pathname,
+}: {
+  href: string;
+  children: React.ReactNode;
+  icon?: React.ElementType;
+  pathname: string;
+}) {
+  const isActive = pathname === href;
+
+  return (
+    <SheetClose asChild>
+      <Link
+        href={href}
+        className={cn(
+          "text-muted-foreground hover:bg-accent hover:text-foreground flex items-center gap-4 rounded-lg px-3 py-2 text-base font-medium transition-colors",
+          isActive && "bg-primary/10 text-primary font-semibold",
+        )}
+      >
+        {Icon && <Icon className={cn("h-5 w-5", isActive && "text-primary")} />}
+        <span>{children}</span>
+      </Link>
+    </SheetClose>
+  );
 }
 
-export default function NavButton({ links }: NavHeaderProps) {
-  const { data: session } = useSession();
+export default function NavButton() {
+  const pathname = usePathname();
 
   return (
     <>
       <div className="hidden items-center gap-4 md:flex">
-        {session ? (
-          <div>
-            <Link href={"/dashboard"}>
-              <Button>Dashboard</Button>
-            </Link>
-          </div>
-        ) : (
-          <div className="flex items-center gap-4">
-            <Link href="/login">
-              <Button variant={"outline"} size={"lg"} className="font-semibold">
-                Masuk
-              </Button>
-            </Link>
-            <Link href="/register">
-              <Button variant={"default"} size={"lg"} className="font-semibold">
-                Daftar
-              </Button>
-            </Link>
-          </div>
-        )}
+        <div className="flex items-center gap-4">
+          <Link href="/login">
+            <Button size={"lg"} className="rounded-md" variant={"outline"}>
+              Login
+            </Button>
+          </Link>
+          <Link href="/register">
+            <Button size={"lg"} className="rounded-md">
+              Register
+            </Button>
+          </Link>
+        </div>
       </div>
 
-      <div className="flex items-center md:hidden">
+      <div className="flex items-center gap-2 md:hidden md:gap-0">
         <Sheet>
           {/* Hamburger */}
           <SheetTrigger asChild>
             <Button
-              variant="outline"
-              size="icon"
-              className="w-full shrink-0 border-0 bg-white text-black shadow-none md:hidden"
+              variant="default"
+              className="rounded-md bg-[#e6e6e6] font-semibold text-black hover:bg-[#e6e6e6] hover:bg-[#e6e6e6]/80 md:hidden"
             >
-              <Menu
-                style={{ height: "20px", width: "20px" }}
-                className="h-24 w-24"
-              />
+              Menu
             </Button>
           </SheetTrigger>
 
           <SheetContent className="flex flex-col">
-            <div className="mx-auto my-8">
-              <Link href={"/"} className="flex items-center gap-2">
+            <SheetHeader>
+              <SheetTitle className="sr-only">Main Menu</SheetTitle>
+              <Link
+                href="/"
+                className="flex items-center justify-center gap-2 text-left font-semibold"
+              >
                 <Image
                   src={"/images/logo/logo.png"}
                   alt="Fitbite"
-                  width={30}
-                  height={30}
+                  width={100}
+                  height={100}
+                  className="max-w-[50px]"
                 />
               </Link>
-            </div>
-            {session ? (
-              <div className="w-full gap-2 px-4">
-                <Link href={"/dashboard"}>
-                  <Button className="w-full">Dashboard</Button>
-                </Link>
-              </div>
-            ) : (
-              <div className="flex w-full gap-2 px-4">
-                <Link href="/login" className="w-full">
-                  <Button variant={"outline"} className="w-full">
-                    Login
-                  </Button>
-                </Link>
-                <Link href="/register" className="w-full">
-                  <Button variant={"default"} className="w-full">
-                    Register
-                  </Button>
-                </Link>
-              </div>
-            )}
-            <nav className="grid-gap-2 space-y-4 px-4">
-              {links.map((link) => (
-                <NavLink key={link.label} {...link} />
-              ))}
+            </SheetHeader>
+            <nav className="space-y-2 px-6">
+              <MobileLink href="/about" pathname={pathname}>
+                About
+              </MobileLink>
+              <MobileLink href="/features" pathname={pathname}>
+                Features
+              </MobileLink>
+              <MobileLink href="/testimonial" pathname={pathname}>
+                Testimonial
+              </MobileLink>
+              <MobileLink href="/how-to-use" pathname={pathname}>
+                How to Use
+              </MobileLink>
             </nav>
+            <SheetFooter>
+              <Link
+                href="/login"
+                className="flex items-center justify-center gap-2 text-left font-semibold"
+              >
+                <Button size={"lg"} className="w-full rounded-md">
+                  Login
+                </Button>
+              </Link>
+              <Link
+                href="/register"
+                className="flex items-center justify-center gap-2 text-left font-semibold"
+              >
+                <Button
+                  size={"lg"}
+                  className="w-full rounded-md"
+                  variant={"outline"}
+                >
+                  Register
+                </Button>
+              </Link>
+            </SheetFooter>
           </SheetContent>
         </Sheet>
       </div>
