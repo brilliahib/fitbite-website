@@ -51,7 +51,10 @@ export default function FormCreateCalories() {
     onSuccess: () => {
       toast.success("Berhasil menambahkan aktvitas kalori baru!");
       queryClient.invalidateQueries({
-        queryKey: ["check-personal-information"],
+        queryKey: ["get-summary-calories"],
+      });
+      queryClient.invalidateQueries({
+        queryKey: ["get-all-calories"],
       });
       router.push("/dashboard/calories");
     },
