@@ -13,6 +13,7 @@ import { DataTable } from "@/components/molecules/datatable/DataTable";
 import { Button } from "@/components/ui/button";
 import { useDeleteCalories } from "@/http/calories/delete-calories";
 import { useGetAllCalories } from "@/http/calories/get-all-calories";
+import { useGetSummaryCalories } from "@/http/calories/get-summary-calories";
 import { Calories } from "@/types/calories/calories";
 import { useQueryClient } from "@tanstack/react-query";
 import { Plus } from "lucide-react";
@@ -26,6 +27,13 @@ export default function DashboardCaloriesWrapper() {
   const queryClient = useQueryClient();
 
   const { data, isPending } = useGetAllCalories(
+    session?.access_token as string,
+    {
+      enabled: status === "authenticated",
+    },
+  );
+
+  const { data: summary, isPending: isSummaryPending } = useGetSummaryCalories(
     session?.access_token as string,
     {
       enabled: status === "authenticated",
@@ -46,9 +54,12 @@ export default function DashboardCaloriesWrapper() {
     useDeleteCalories({
       onSuccess: () => {
         setSelectedCalories(null);
-        toast.success("Calories berhasil dihapus!");
+        toast.success("Aktivitas kalori berhasil dihapus!");
         queryClient.invalidateQueries({
-          queryKey: ["Caloriess-list"],
+          queryKey: ["get-summary-calories"],
+        });
+        queryClient.invalidateQueries({
+          queryKey: ["get-all-calories"],
         });
       },
       onError: (err) => {
@@ -80,20 +91,37 @@ export default function DashboardCaloriesWrapper() {
       <div className="flex flex-col gap-6 md:gap-12">
         <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-2 md:gap-6">
           <div className="flex flex-col gap-4 md:gap-6">
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
-              <CardMaximumCalories />
-              <CardRemainingCalories />
-              <CardPercentageCalories />
-              <CardRemainingPercentageCalories />
+            <div className="grid grid-cols-2 gap-4 md:gap-6">
+              <CardMaximumCalories
+                max_calories={summary?.data.max_calories}
+                isLoading={isSummaryPending}
+              />
+              <CardRemainingCalories
+                rest_calories={summary?.data.rest_calories}
+                isLoading={isSummaryPending}
+              />
+              <CardPercentageCalories
+                percentage_calories={summary?.data.percentage_calories}
+                isLoading={isSummaryPending}
+              />
+              <CardRemainingPercentageCalories
+                percentage_rest_calories={
+                  summary?.data.percentage_rest_calories
+                }
+                isLoading={isSummaryPending}
+              />
             </div>
             <CardBannerCalories />
           </div>
           <div className="self-start">
-            <ChartDashboardCalories />
+            <ChartDashboardCalories
+              summary={summary?.data}
+              isLoading={isSummaryPending}
+            />
           </div>
         </div>
         <div className="flex flex-col gap-6">
-          <div className="flex items-end justify-between gap-4 md:gap-0">
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between md:gap-0">
             <div className="space-y-2">
               <h1 className="text-2xl font-bold">Aktivitas Kalori</h1>
               <p className="text-muted-foreground text-sm">

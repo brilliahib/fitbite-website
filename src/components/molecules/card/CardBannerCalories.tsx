@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export default function CardBannerCalories() {
   return (
-    <Card className="bg-primary text-primary-foreground shadow-primary/30 rounded-xl shadow-lg">
+    <Card className="bg-primary text-primary-foreground shadow-primary/30 hidden rounded-xl shadow-lg md:inline">
       <CardContent className="flex items-center justify-between px-10">
         {/* Text Section */}
         <div className="flex flex-col gap-3">
