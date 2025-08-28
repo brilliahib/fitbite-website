@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Flame } from "lucide-react";
 
 interface CardMaximumCaloriesProps {
   max_calories?: number;
@@ -11,7 +12,11 @@ export default function CardMaximumCalories({
   isLoading = false,
 }: CardMaximumCaloriesProps) {
   return (
-    <Card>
+    <Card className="relative">
+      <div className="bg-destructive/10 absolute top-4 right-4 rounded-md p-2">
+        <Flame className="text-destructive h-6 w-6" />
+      </div>
+
       <CardContent className="space-y-2">
         <p className="text-muted-foreground">Maksimal Kalori</p>
         {isLoading ? (

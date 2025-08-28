@@ -78,10 +78,10 @@ export function NavUser({ session }: NavUserProps) {
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <Link href={"/dashboard"}>
+              <Link href={"/"}>
                 <DropdownMenuItem className="cursor-pointer">
                   <Home />
-                  Halaman Beranda
+                  Beranda
                 </DropdownMenuItem>
               </Link>
             </DropdownMenuGroup>
@@ -90,7 +90,7 @@ export function NavUser({ session }: NavUserProps) {
               onClick={() => signOut({ callbackUrl: "/" })}
               className="text-destructive focus:bg-destructive/20 focus:text-destructive cursor-pointer"
             >
-              <LogOut />
+              <LogOut className="text-destructive" />
               Log out
             </DropdownMenuItem>
           </DropdownMenuContent>

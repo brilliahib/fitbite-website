@@ -383,7 +383,7 @@ export function AppSidebar({ session }: AppSidebarProps) {
       </SidebarContent>
 
       {/* Footer */}
-      <SidebarFooter>
+      <SidebarFooter className="bg-white">
         <NavUser session={session} />
       </SidebarFooter>
     </Sidebar>
