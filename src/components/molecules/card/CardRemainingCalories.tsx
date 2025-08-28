@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Utensils } from "lucide-react";
 
 interface CardRemainingCaloriesProps {
   rest_calories?: number;
@@ -11,7 +12,11 @@ export default function CardRemainingCalories({
   isLoading,
 }: CardRemainingCaloriesProps) {
   return (
-    <Card>
+    <Card className="relative">
+      <div className="bg-primary/10 absolute top-4 right-4 rounded-md p-2">
+        <Utensils className="text-primary h-6 w-6" />
+      </div>
+
       <CardContent className="space-y-2">
         <p className="text-muted-foreground">Sisa Kalori</p>
         {isLoading ? (

@@ -91,7 +91,7 @@ export default function DashboardCaloriesWrapper() {
       <div className="flex flex-col gap-6 md:gap-12">
         <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-2 md:gap-6">
           <div className="flex flex-col gap-4 md:gap-6">
-            <div className="grid grid-cols-2 gap-4 md:gap-6">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
               <CardMaximumCalories
                 max_calories={summary?.data.max_calories}
                 isLoading={isSummaryPending}
