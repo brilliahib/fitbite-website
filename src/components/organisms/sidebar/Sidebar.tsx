@@ -57,7 +57,7 @@ export function AppSidebar({ session }: AppSidebarProps) {
   return (
     <Sidebar>
       {/* Header */}
-      <SidebarHeader className="h-14 cursor-default justify-center border-b bg-white dark:bg-slate-950">
+      <SidebarHeader className="h-14 cursor-default justify-center bg-white dark:bg-slate-950">
         <SidebarMenu>
           <SidebarMenuItem>
             <div className="ml-2 flex items-center gap-x-3">
