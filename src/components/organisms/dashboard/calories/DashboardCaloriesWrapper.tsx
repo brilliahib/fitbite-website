@@ -111,7 +111,10 @@ export default function DashboardCaloriesWrapper() {
                 isLoading={isSummaryPending}
               />
             </div>
-            <CardBannerCalories />
+            <CardBannerCalories
+              data={summary?.data}
+              isLoading={isSummaryPending}
+            />
           </div>
           <div className="self-start">
             <ChartDashboardCalories

@@ -150,7 +150,7 @@ export function AppSidebar({ session }: AppSidebarProps) {
                         >
                           <Link href="/dashboard/plan">
                             <CalendarFold />
-                            <span>Diet Plan</span>
+                            <span>Meal Plan</span>
                           </Link>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
