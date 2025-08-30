@@ -3,15 +3,15 @@ import DashboardDietPlanWrapper from "@/components/organisms/dashboard/plan/Dash
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Diet Plan - Fitbite",
+  title: "Meal Plan - Fitbite",
 };
 
-export default function PlanDietPage() {
+export default function PlanMealPage() {
   return (
     <section>
       <DashboardTitle
-        head="Diet Plan"
-        body="Buat diet plan Anda menjadi lebih mudah dan terorganisir."
+        head="Meal Plan"
+        body="Buat meal plan Anda menjadi lebih mudah dan terorganisir."
       />
       <DashboardDietPlanWrapper />
     </section>
