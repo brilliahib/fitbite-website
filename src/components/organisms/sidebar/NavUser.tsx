@@ -93,7 +93,7 @@ export function NavUser({ session }: NavUserProps) {
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <Link href={"/"}>
+              <Link href={"/dashboard"}>
                 <DropdownMenuItem className="cursor-pointer">
                   <Home />
                   Dashboard

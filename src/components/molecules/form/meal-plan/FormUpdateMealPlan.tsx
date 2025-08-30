@@ -29,6 +29,15 @@ import {
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface FormUpdateMealPlanProps {
   id: number;
@@ -115,7 +124,21 @@ export default function FormUpdateMealPlan({
                 Meal <span className="text-red-500">*</span>
               </FormLabel>
               <FormControl>
-                <Input type="text" placeholder="Masukkan meal" {...field} />
+                <Select onValueChange={field.onChange} value={field.value}>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Pilih Meal" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectLabel>Pilihan Meal</SelectLabel>
+                      <SelectItem value="Sarapan">Sarapan</SelectItem>
+                      <SelectItem value="Makan Siang">Makan Siang</SelectItem>
+                      <SelectItem value="Makan Malam">Makan Malam</SelectItem>
+                      <SelectItem value="Cemilan">Cemilan</SelectItem>
+                      <SelectItem value="Minuman">Minuman</SelectItem>
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
               </FormControl>
               <FormMessage />
             </FormItem>
