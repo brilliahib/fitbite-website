@@ -28,7 +28,7 @@ export default async function DashboardLayout({
       <AppSidebar session={session!} />
       <SidebarInset>
         <BreadcrumbNav />
-        <div className="px-5 pt-20 pb-6">{children}</div>
+        <div className="px-5 pt-20 pb-6 md:pt-10">{children}</div>
       </SidebarInset>
     </SidebarProvider>
   );
