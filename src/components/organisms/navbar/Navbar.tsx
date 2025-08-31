@@ -35,9 +35,9 @@ export default function Navbar() {
         active: pathname.startsWith("/testimonials"),
       },
       {
-        href: "/how-to-use",
-        label: "How to Use",
-        active: pathname.startsWith("/how-to-use"),
+        href: "/faq",
+        label: "FAQ",
+        active: pathname.startsWith("/faq"),
       },
     ],
     [pathname],
