@@ -3,5 +3,5 @@ export default function PageContainer({
 }: {
   children: React.ReactNode;
 }) {
-  return <div className="pad-x pt-20">{children}</div>;
+  return <div className="pad-x-xl pt-20">{children}</div>;
 }

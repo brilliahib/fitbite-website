@@ -100,8 +100,8 @@ export default function NavButton() {
               <MobileLink href="/testimonial" pathname={pathname}>
                 Testimonial
               </MobileLink>
-              <MobileLink href="/how-to-use" pathname={pathname}>
-                How to Use
+              <MobileLink href="/faq" pathname={pathname}>
+                FAQ
               </MobileLink>
             </nav>
             <SheetFooter>

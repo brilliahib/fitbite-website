@@ -1,5 +1,6 @@
 import Navbar from "../navbar/Navbar";
 import HomeAbout from "./HomeAbout";
+import HomeAboutFitbite from "./HomeAboutFitbite";
 import HomeHero from "./HomeHero";
 
 export default function HomeWrapper() {
@@ -8,6 +9,7 @@ export default function HomeWrapper() {
       <Navbar />
       <HomeHero />
       <HomeAbout />
+      <HomeAboutFitbite />
     </div>
   );
 }

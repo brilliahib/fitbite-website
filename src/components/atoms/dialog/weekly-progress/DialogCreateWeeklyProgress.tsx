@@ -35,7 +35,7 @@ export default function DialogCreateWeeklyProgress({
           <AlertTitle>Informasi</AlertTitle>
           <AlertDescription>
             <p>
-              Berat badan Anda sekarang adalah{" "}
+              Berat badan terakhir adalah{" "}
               <span className="font-semibold text-black">
                 {data?.data.weight} kg
               </span>
