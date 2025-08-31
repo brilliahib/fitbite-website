@@ -30,7 +30,6 @@ import { useRegister } from "@/http/auth/register";
 import { toast } from "sonner";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
-import Image from "next/image";
 
 export default function FormAuthRegister() {
   const form = useForm<RegisterType>({
@@ -47,7 +46,6 @@ export default function FormAuthRegister() {
   });
 
   const router = useRouter();
-  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
   const errorMessages: Record<string, string> = {
     email: "Email sudah digunakan.",
@@ -78,7 +76,7 @@ export default function FormAuthRegister() {
           }
         });
       } else {
-        toast.error("Pendaftaran Gagal", {
+        toast.error("Pendaftaran Gagal!", {
           description: "Terjadi kesalahan, silakan periksa kembali data Anda.",
         });
       }
@@ -97,8 +95,9 @@ export default function FormAuthRegister() {
         return;
       }
 
-      toast.success("Berhasil Mendaftar", {
-        description: "Anda akan otomatis masuk ke halaman dashboard",
+      toast.success("Berhasil Mendaftar!", {
+        description:
+          "Selamat datang di Fitbite! Silahkan mengisi informasi pribadi",
       });
       return router.push("/dashboard");
     },

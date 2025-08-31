@@ -53,8 +53,9 @@ export default function FormAuthLogin() {
       return;
     }
 
-    toast.success("Login Berhasil", {
-      description: "Anda akan diarahkan menuju halaman dashboard",
+    toast.success("Login Berhasil!", {
+      description:
+        "Selamat datang di Fitbite! Anda akan diarahkan ke halaman dashboard.",
     });
 
     router.push("/dashboard");
