@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     "cara menurunkan berat badan",
   ],
   openGraph: {
-    title: "Track Your Calories - FitBite",
+    title: "FitBite",
     description:
       "FitBite membantu kamu menghitung kalori, melacak makanan, dan mencapai tujuan kesehatan dengan mudah.",
     url: "https://fitbite.brilliahib.tech",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
         url: "https://fitbite.brilliahib.tech/images/logo/logo.png",
         width: 1200,
         height: 630,
-        alt: "Track Your Calories - FitBite",
+        alt: "FitBite",
       },
     ],
     locale: "id_ID",
