@@ -107,6 +107,7 @@ export default function HomeTestimonial() {
                       width={80}
                       height={80}
                       className="ring-primary mb-3 rounded-full border-4 border-white object-cover shadow-md ring-2"
+                      unoptimized
                     />
                   </div>
                   <p className="text-muted-foreground text-sm leading-relaxed italic">

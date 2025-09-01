@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function FooterContent() {
   return (
-    <footer className="pad-x-xl bg-[#1f4f47] py-20 text-white">
+    <footer className="pad-x-xl mt-10 bg-[#1f4f47] py-20 text-white">
       <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
         <div className="space-y-6">
           <Image
