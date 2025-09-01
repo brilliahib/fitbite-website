@@ -18,9 +18,7 @@ import {
 } from "@/components/ui/sidebar";
 import {
   LayoutDashboard,
-  Search,
   Book,
-  History,
   BookOpen,
   ClipboardPen,
   User,
@@ -30,13 +28,13 @@ import {
   Settings2,
   Users,
   CircleHelp,
-  UserRoundSearch,
   Camera,
   Flame,
   Beef,
   BookText,
   CalendarFold,
   Dumbbell,
+  Mic,
 } from "lucide-react";
 import { NavUser } from "./NavUser";
 
@@ -162,6 +160,17 @@ export function AppSidebar({ session }: AppSidebarProps) {
                           <Link href="/dashboard/progress">
                             <Dumbbell />
                             <span>Progress Mingguan</span>
+                          </Link>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                      <SidebarMenuItem>
+                        <SidebarMenuButton
+                          asChild
+                          className={buttonClass("/dashboard/voice")}
+                        >
+                          <Link href="/dashboard/voice">
+                            <Mic />
+                            <span>Voice Assistant</span>
                           </Link>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
