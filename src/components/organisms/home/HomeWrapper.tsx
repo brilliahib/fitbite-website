@@ -7,13 +7,15 @@ import HomeTestimonial from "./HomeTestimonial";
 
 export default function HomeWrapper() {
   return (
-    <div className="overflow-hidden md:space-y-24">
+    <div>
       <Navbar />
-      <HomeHero />
-      <HomeAbout />
-      <HomeAboutFitbite />
-      <HomeTestimonial />
-      <FooterContent />
+      <div className="overflow-hidden md:space-y-24">
+        <HomeHero />
+        <HomeAbout />
+        <HomeAboutFitbite />
+        <HomeTestimonial />
+        <FooterContent />
+      </div>
     </div>
   );
 }
