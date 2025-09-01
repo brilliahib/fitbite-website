@@ -17,7 +17,37 @@ const figtree = Figtree({
 
 export const metadata: Metadata = {
   title: "Track Your Calories - FitBite",
-  description: "Track your calorie intake and stay fit with FitBite",
+  description:
+    "FitBite adalah aplikasi website untuk menghitung kalori, memantau asupan makanan, dan membantu kamu mencapai tujuan diet serta hidup lebih sehat.",
+  keywords: [
+    "hitung kalori online",
+    "aplikasi diet Indonesia",
+    "atur pola makan sehat",
+    "track kalori harian",
+    "aplikasi gaya hidup sehat",
+    "penghitung kalori makanan",
+    "diet sehat online",
+    "kalkulator kalori gratis",
+    "aplikasi kesehatan dan kebugaran",
+    "cara menurunkan berat badan",
+  ],
+  openGraph: {
+    title: "Track Your Calories - FitBite",
+    description:
+      "FitBite membantu kamu menghitung kalori, melacak makanan, dan mencapai tujuan kesehatan dengan mudah.",
+    url: "https://fitbite.brilliahib.tech",
+    siteName: "FitBite",
+    images: [
+      {
+        url: "https://fitbite.brilliahib.tech/images/logo/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Track Your Calories - FitBite",
+      },
+    ],
+    locale: "id_ID",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
