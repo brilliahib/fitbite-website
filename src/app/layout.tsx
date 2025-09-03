@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Figtree, Paytone_One } from "next/font/google";
+import { Figtree, Paytone_One, Rubik } from "next/font/google";
 import "./globals.css";
 import GlobalProvider from "@/components/organisms/GlobalProvider";
 
@@ -9,8 +9,8 @@ const paytoneOne = Paytone_One({
   subsets: ["latin"],
 });
 
-const figtree = Figtree({
-  variable: "--font-figtree",
+const rubik = Rubik({
+  variable: "--font-rubik",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
 });
@@ -57,9 +57,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${figtree.variable} ${paytoneOne.variable} antialiased`}
-      >
+      <body className={`${rubik.variable} ${paytoneOne.variable} antialiased`}>
         <GlobalProvider>{children}</GlobalProvider>
       </body>
     </html>
