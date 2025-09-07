@@ -2,7 +2,7 @@
 
 import React, { useRef, useState } from "react";
 import Webcam from "react-webcam";
-import { Camera } from "lucide-react";
+import { Camera, RefreshCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { usePredictFoodScan } from "@/http/food-scan/predict-food-scan";
@@ -13,6 +13,7 @@ export default function DashboardScanWrapper() {
   const webcamRef = useRef<Webcam>(null);
   const [image, setImage] = useState<string | null>(null);
   const [result, setResult] = useState<FoodScan | null>(null);
+  const [facingMode, setFacingMode] = useState<"user" | "environment">("user");
 
   const { mutate: predictFood, isPending } = usePredictFoodScan({
     onError: () => {
@@ -38,6 +39,11 @@ export default function DashboardScanWrapper() {
     }
   };
 
+  const toggleCamera = () => {
+    setFacingMode((prev) => (prev === "user" ? "environment" : "user"));
+    setImage(null);
+  };
+
   return (
     <div className="flex flex-col items-center gap-6">
       <div className="relative h-[80vh] w-full max-w-3xl overflow-hidden rounded-xl border bg-black shadow-md md:aspect-video md:h-auto">
@@ -47,6 +53,7 @@ export default function DashboardScanWrapper() {
             ref={webcamRef}
             screenshotFormat="image/jpeg"
             className="h-full w-full object-cover"
+            videoConstraints={{ facingMode }}
           />
         ) : (
           <Image
@@ -58,14 +65,21 @@ export default function DashboardScanWrapper() {
             height={1000}
           />
         )}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
+        <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-4">
           <Button
             size="icon"
             className="h-12 w-12 rounded-full shadow-lg"
             onClick={captureImage}
             disabled={isPending}
           >
-            <Camera className="h-6! w-6!" />
+            <Camera className="h-6 w-6" />
+          </Button>
+          <Button
+            size="icon"
+            className="h-12 w-12 rounded-full shadow-lg"
+            onClick={toggleCamera}
+          >
+            <RefreshCcw className="h-6 w-6" />
           </Button>
         </div>
       </div>

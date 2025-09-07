@@ -49,16 +49,18 @@ export default function NavButton() {
     <>
       <div className="hidden items-center gap-4 md:flex">
         <div className="flex items-center gap-4">
-          <Link href="/login">
-            <Button size={"lg"} className="rounded-md" variant={"outline"}>
-              Login
-            </Button>
-          </Link>
-          <Link href="/register">
-            <Button size={"lg"} className="rounded-md">
-              Register
-            </Button>
-          </Link>
+          <Button
+            size={"lg"}
+            className="rounded-md"
+            variant={"outline"}
+            asChild
+          >
+            <Link href="/login">Login</Link>
+          </Button>
+
+          <Button size={"lg"} className="rounded-md" asChild>
+            <Link href="/register">Register</Link>
+          </Button>
         </div>
       </div>
 

@@ -4,6 +4,7 @@ import PageContainer from "@/components/atoms/container/PageContainer";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function HomeHero() {
   return (
@@ -43,7 +44,9 @@ export default function HomeHero() {
               }}
               transition={{ duration: 0.4 }}
             >
-              <Button size={"lg"}>Coba Sekarang</Button>
+              <Button size={"lg"} asChild>
+                <Link href="/register">Coba Sekarang</Link>
+              </Button>
             </motion.div>
 
             <motion.div
@@ -53,8 +56,8 @@ export default function HomeHero() {
               }}
               transition={{ duration: 0.4 }}
             >
-              <Button size={"lg"} variant={"outline"}>
-                Masuk Komunitas
+              <Button size={"lg"} variant={"outline"} asChild>
+                <Link href="/dashboard/community">Masuk Komunitas</Link>
               </Button>
             </motion.div>
           </motion.div>
