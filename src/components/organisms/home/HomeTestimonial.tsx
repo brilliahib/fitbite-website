@@ -98,7 +98,7 @@ export default function HomeTestimonial() {
               transition={{ type: "spring", stiffness: 300 }}
               className="flex-shrink-0 px-4"
             >
-              <Card className="w-90 rounded-2xl bg-gradient-to-b from-white to-gray-50 shadow-lg transition-all hover:shadow-xl dark:from-zinc-900 dark:to-zinc-800">
+              <Card className="w-90 rounded-2xl bg-gradient-to-b from-white to-gray-50 transition-all dark:from-zinc-900 dark:to-zinc-800">
                 <CardContent className="flex flex-col items-center p-6 text-center">
                   <div className="relative">
                     <Image

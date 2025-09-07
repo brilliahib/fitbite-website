@@ -45,7 +45,7 @@ export default function DashboardCommunityWrapper() {
         <CardListMessageCommunity data={data?.data} isLoading={isPending} />
       </div>
       <div className="hidden md:inline md:flex-[1]">
-        <div className="flex flex-col gap-6 md:sticky md:top-20">
+        <div className="flex flex-col gap-6 md:sticky md:top-10">
           <Card>
             <CardContent className="space-y-6">
               <h1 className="font-semibold">Topik Teratas</h1>
