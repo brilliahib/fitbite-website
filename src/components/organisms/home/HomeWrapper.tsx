@@ -4,6 +4,7 @@ import HomeAbout from "./HomeAbout";
 import HomeAboutFitbite from "./HomeAboutFitbite";
 import HomeHero from "./HomeHero";
 import HomeTestimonial from "./HomeTestimonial";
+import HomeFAQ from "./HomeFAQ";
 
 export default function HomeWrapper() {
   return (
@@ -14,6 +15,7 @@ export default function HomeWrapper() {
         <HomeAbout />
         <HomeAboutFitbite />
         <HomeTestimonial />
+        <HomeFAQ />
         <FooterContent />
       </div>
     </div>
