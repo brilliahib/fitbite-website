@@ -1,13 +1,4 @@
-"use client";
-
-import LandingTitle from "@/components/atoms/typography/LandingTitle";
-import { MessageSquareText, Star } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import Marquee from "@/components/molecules/marquee/MarqueeTestimonial";
-import Image from "next/image";
-import { motion } from "framer-motion";
-
-const testimonials = [
+export const testimonials = [
   {
     name: "Sarah Anindita",
     text: "Sejak menggunakan Fitbite, saya jadi lebih disiplin dalam menghitung kalori. Awalnya sulit, tapi kini saya bisa tahu kalori harian dengan jelas sehingga pola makan jadi lebih sehat dan stabil.",
@@ -78,61 +69,84 @@ const testimonials = [
     text: "Fitbite mantap banget untuk siapa saja yang serius menjaga kesehatan. Saya merasa punya kontrol penuh terhadap pola makan, tapi tetap dengan cara yang simpel dan tidak menyulitkan.",
     image: "https://randomuser.me/api/portraits/men/27.jpg",
   },
+  {
+    name: "Siti Rahma",
+    text: "Dengan Fitbite saya jadi lebih disiplin olahraga dan makan tepat waktu. Fitur reminder dan laporan membuat semua kegiatan lebih terstruktur.",
+    image: "https://randomuser.me/api/portraits/women/48.jpg",
+  },
+  {
+    name: "Ahmad Fauzi",
+    text: "Aplikasi Fitbite sangat ringan dan cepat. Tidak ada lag saat mencatat makanan, sangat membantu saya di hari yang sibuk.",
+    image: "https://randomuser.me/api/portraits/men/50.jpg",
+  },
+  {
+    name: "Dewi Lestari",
+    text: "Fitur grafik dan laporan mingguan Fitbite membuat saya lebih termotivasi. Rasanya seperti punya pelatih pribadi yang selalu mengingatkan saya.",
+    image: "https://randomuser.me/api/portraits/women/18.jpg",
+  },
+  {
+    name: "Hendra Wijaya",
+    text: "Fitbite membuat tracking kalori jadi menyenangkan. Semua data mudah dipahami dan memotivasi untuk hidup lebih sehat.",
+    image: "https://randomuser.me/api/portraits/men/22.jpg",
+  },
+  {
+    name: "Nina Maharani",
+    text: "Saya bisa memonitor asupan gizi dengan mudah. Fitbite sangat membantu dalam menjaga pola makan keluarga saya.",
+    image: "https://randomuser.me/api/portraits/women/27.jpg",
+  },
+  {
+    name: "Eko Prasetyo",
+    text: "Fitbite sangat fleksibel. Bisa dicatat di handphone kapan saja tanpa mengganggu aktivitas. Sangat efisien untuk orang sibuk seperti saya.",
+    image: "https://randomuser.me/api/portraits/men/38.jpg",
+  },
+  {
+    name: "Yulia Santoso",
+    text: "Fitur reminder Fitbite sangat membantu saya untuk tidak melewatkan makan sehat dan tetap pada target kalori harian.",
+    image: "https://randomuser.me/api/portraits/women/33.jpg",
+  },
+  {
+    name: "Rafael Gunawan",
+    text: "Saya bisa memantau progres dengan mudah. Fitbite membantu membuat keputusan makan lebih bijak dan sehat.",
+    image: "https://randomuser.me/api/portraits/men/45.jpg",
+  },
+  {
+    name: "Mellisa Putri",
+    text: "Aplikasi Fitbite mudah digunakan, desainnya bersih dan intuitif. Membuat tracking makanan jadi menyenangkan setiap hari.",
+    image: "https://randomuser.me/api/portraits/women/22.jpg",
+  },
+  {
+    name: "Agus Salim",
+    text: "Fitbite benar-benar membantu mengatur asupan kalori dan nutrisi saya. Sangat berguna untuk menjaga pola makan tetap konsisten.",
+    image: "https://randomuser.me/api/portraits/men/30.jpg",
+  },
+  {
+    name: "Vina Anggraini",
+    text: "Dengan Fitbite saya bisa tetap makan favorit tanpa merasa bersalah. Rasanya lebih terkontrol dan sehat.",
+    image: "https://randomuser.me/api/portraits/women/40.jpg",
+  },
+  {
+    name: "Rizal Hidayat",
+    text: "Fitbite membantu saya mengatur jadwal makan dan olahraga. Semua progress terlihat jelas di laporan mingguan.",
+    image: "https://randomuser.me/api/portraits/men/55.jpg",
+  },
+  {
+    name: "Laras Prameswari",
+    text: "Aplikasi ini praktis dan simple. Cocok untuk pemula yang ingin mulai hidup sehat tanpa ribet.",
+    image: "https://randomuser.me/api/portraits/women/15.jpg",
+  },
+  {
+    name: "Bayu Kurniawan",
+    text: "Fitbite membantu saya menjaga pola makan saat kerja lembur. Semua makanan tercatat rapi dan mudah dipantau.",
+    image: "https://randomuser.me/api/portraits/men/60.jpg",
+  },
+  {
+    name: "Cindy Natalia",
+    text: "Fitbite memudahkan saya memantau nutrisi harian. Grafik dan laporan membuat saya termotivasi setiap minggu.",
+    image: "https://randomuser.me/api/portraits/women/55.jpg",
+  },
+  {
+    name: "Dony Pratama",
+    text: "Aplikasi Fitbite cepat, ringan, dan mudah dipakai. Membuat hidup sehat jadi lebih mudah dan menyenangkan.",
+    image: "https://randomuser.me/api/portraits/men/20.jpg",
+  },
 ];
-
-export default function HomeTestimonial() {
-  return (
-    <section className="space-y-10 overflow-hidden pt-20">
-      <LandingTitle
-        badgeTitle="Our Testimonials"
-        icon={MessageSquareText}
-        title="What Are People Saying?"
-        description="Discover how Fitbite has helped our users achieve their health goals through their own stories and experiences."
-      />
-      <div className="relative">
-        <Marquee pauseOnHover className="[--duration:35s]">
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={index}
-              whileHover={{ scale: 1.01 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="flex-shrink-0 px-4"
-            >
-              <Card className="w-100 rounded-2xl bg-gradient-to-b from-white to-gray-50 transition-all dark:from-zinc-900 dark:to-zinc-800">
-                <CardContent className="space-y-4">
-                  <div className="flex flex-row space-x-1 text-yellow-400">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} size={16} fill="currentColor" />
-                    ))}
-                  </div>
-                  <p className="text-muted-foreground text-sm leading-relaxed italic">
-                    &quot;{testimonial.text}&quot;
-                  </p>
-                  <div className="flex items-center gap-3">
-                    <div className="relative">
-                      <Image
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        width={50}
-                        height={50}
-                        className="ring-primary rounded-full border-4 border-white object-cover shadow-md ring-2"
-                        unoptimized
-                      />
-                    </div>
-                    <p className="text-foreground text-sm font-semibold">
-                      {testimonial.name}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </Marquee>
-
-        <div className="pointer-events-none absolute top-0 right-0 hidden h-full w-60 bg-gradient-to-l from-white to-transparent md:flex dark:from-zinc-900" />
-
-        <div className="pointer-events-none absolute top-0 left-0 hidden h-full w-60 bg-gradient-to-r from-white to-transparent md:flex dark:from-zinc-900" />
-      </div>
-    </section>
-  );
-}
