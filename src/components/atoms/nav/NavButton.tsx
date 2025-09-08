@@ -93,7 +93,7 @@ export default function NavButton() {
               </Link>
             </SheetHeader>
             <nav className="space-y-2 px-6">
-              <MobileLink href="/about" pathname={pathname}>
+              <MobileLink href="/about-us" pathname={pathname}>
                 About
               </MobileLink>
               <MobileLink href="/features" pathname={pathname}>
