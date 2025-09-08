@@ -32,7 +32,7 @@ export default function Navbar() {
       {
         href: "/testimonial",
         label: "Testimonial",
-        active: pathname.startsWith("/testimonials"),
+        active: pathname.startsWith("/testimonial"),
       },
       {
         href: "/faq",
