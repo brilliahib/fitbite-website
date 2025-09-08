@@ -8,6 +8,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 export default function TestimonialWrapper() {
   const [visibleCount, setVisibleCount] = useState(12);
@@ -35,36 +36,44 @@ export default function TestimonialWrapper() {
             }`}
           >
             {testimonials.slice(0, visibleCount).map((testimonial, index) => (
-              <Card
+              <motion.div
                 key={index}
-                className="rounded-2xl bg-gradient-to-b from-white to-gray-50 transition-all dark:from-zinc-900 dark:to-zinc-800"
+                initial={{ opacity: 0, y: 40, scale: 1 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.05,
+                  ease: "easeOut",
+                }}
               >
-                <CardContent className="space-y-4">
-                  <div className="flex flex-row space-x-1 text-yellow-400">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} size={16} fill="currentColor" />
-                    ))}
-                  </div>
-                  <p className="text-muted-foreground text-sm leading-relaxed italic">
-                    &quot;{testimonial.text}&quot;
-                  </p>
-                  <div className="flex items-center gap-3">
-                    <div className="relative">
-                      <Image
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        width={50}
-                        height={50}
-                        className="ring-primary rounded-full border-4 border-white object-cover shadow-md ring-2"
-                        unoptimized
-                      />
+                <Card className="h-full rounded-2xl bg-gradient-to-b from-white to-gray-50 transition-all dark:from-zinc-900 dark:to-zinc-800">
+                  <CardContent className="space-y-4">
+                    <div className="flex flex-row space-x-1 text-yellow-400">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <Star key={i} size={16} fill="currentColor" />
+                      ))}
                     </div>
-                    <p className="text-foreground text-sm font-semibold">
-                      {testimonial.name}
+                    <p className="text-muted-foreground text-sm leading-relaxed italic">
+                      &quot;{testimonial.text}&quot;
                     </p>
-                  </div>
-                </CardContent>
-              </Card>
+                    <div className="flex items-center gap-3">
+                      <div className="relative">
+                        <Image
+                          src={testimonial.image}
+                          alt={testimonial.name}
+                          width={50}
+                          height={50}
+                          className="ring-primary rounded-full border-4 border-white object-cover shadow-md ring-2"
+                          unoptimized
+                        />
+                      </div>
+                      <p className="text-foreground text-sm font-semibold">
+                        {testimonial.name}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
           </div>
 
