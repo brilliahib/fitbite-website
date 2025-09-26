@@ -49,14 +49,6 @@ export const caloriesColumns = (
 
       return (
         <ActionButton>
-          <Link
-            href={`/dashboard/admin/periods/${data.id}`}
-            className="flex items-center text-gray-700 hover:underline"
-          >
-            <Eye className="h-4 w-4" />
-            <span className="ml-2">Detail</span>
-          </Link>
-
           <div
             onClick={() => props.updateCaloriesHandler(data)}
             className="flex cursor-pointer items-center text-yellow-600 hover:text-yellow-800 hover:underline"
