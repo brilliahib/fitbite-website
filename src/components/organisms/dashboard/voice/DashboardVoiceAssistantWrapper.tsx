@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Mic, Phone } from "lucide-react";
@@ -15,6 +15,9 @@ export default function DashboardVoiceAssistantWrapper() {
   );
   const [recording, setRecording] = useState(false);
   const responseRef = useRef("");
+
+  const recognitionRef = useRef<SpeechRecognition | null>(null);
+  const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
 
   const parseResponse = (text: string) => {
     const elements: React.ReactNode[] = [];
@@ -51,7 +54,14 @@ export default function DashboardVoiceAssistantWrapper() {
       return;
     }
 
+    // Stop previous recognition if any
+    if (recognitionRef.current) {
+      recognitionRef.current.stop();
+    }
+
     const recognition: SpeechRecognition = new SpeechRecognitionConstructor();
+    recognitionRef.current = recognition;
+
     recognition.lang = "id-ID";
     recognition.interimResults = true;
     recognition.maxAlternatives = 1;
@@ -83,10 +93,15 @@ export default function DashboardVoiceAssistantWrapper() {
                 if (wordIndex >= words.length) clearInterval(interval);
               }, 120);
 
-              const cleanText = data.data.replace(/\*/g, "");
+              // Stop any previous utterance
+              if (utteranceRef.current) {
+                speechSynthesis.cancel();
+              }
 
+              const cleanText = data.data.replace(/\*/g, "");
               const utterance = new SpeechSynthesisUtterance(cleanText);
               utterance.lang = "id-ID";
+              utteranceRef.current = utterance;
               speechSynthesis.speak(utterance);
             })
             .catch((err) => console.error(err));
@@ -99,6 +114,19 @@ export default function DashboardVoiceAssistantWrapper() {
 
     recognition.start();
   };
+
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      if (recognitionRef.current) recognitionRef.current.stop();
+      if (speechSynthesis.speaking) speechSynthesis.cancel();
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
 
   return (
     <div className="flex min-h-[80vh] flex-col items-center justify-center">
