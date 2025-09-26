@@ -10,7 +10,7 @@ if (!apiKey) {
 const genAI = new GoogleGenerativeAI(apiKey);
 
 const model = genAI.getGenerativeModel({
-  model: "gemini-1.5-flash",
+  model: "gemini-2.0-flash",
   systemInstruction: `
 Persona:
 
@@ -58,7 +58,6 @@ export async function POST(req: NextRequest) {
     });
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
-     
     console.error("Error interacting with Diet Assistant:", error.message);
     return NextResponse.json(
       { statusCode: 500, message: "Internal server error" },

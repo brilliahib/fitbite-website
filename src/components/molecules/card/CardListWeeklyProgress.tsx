@@ -52,67 +52,63 @@ export default function CardListWeeklyProgress({
         const isNegative = progress.progress_percentage < 0;
 
         return (
-          <Link
+          <Card
+            className="rounded-2xl transition-all duration-300"
             key={progress.id}
-            href={`/dashboard/weekly-progress/${progress.id}`}
           >
-            <Card className="rounded-2xl transition-all duration-300">
-              <CardHeader className="flex flex-row items-center justify-between">
-                <div>
-                  <span className="font-semibold">
-                    Progress Minggu ke {data.length - index}
-                  </span>
-                </div>
-                <Badge
-                  variant={
-                    isPositive
-                      ? "default"
-                      : isNegative
-                        ? "destructive"
-                        : "secondary"
-                  }
-                  className="flex items-center gap-1 rounded-md px-2 py-1 text-xs"
-                >
-                  {isPositive && <ArrowUp className="h-4 w-4" />}
-                  {isNegative && <ArrowDown className="h-4 w-4" />}
-                  Progress {""}
-                  {isPositive
-                    ? `naik ${progress.progress_percentage}%`
+            <CardHeader className="flex flex-row items-center justify-between">
+              <div>
+                <span className="font-semibold">
+                  Progress Minggu ke {data.length - index}
+                </span>
+              </div>
+              <Badge
+                variant={
+                  isPositive
+                    ? "default"
                     : isNegative
-                      ? `turun ${Math.abs(progress.progress_percentage)}%`
-                      : `stabil`}
-                </Badge>
-              </CardHeader>
+                      ? "destructive"
+                      : "secondary"
+                }
+                className="flex items-center gap-1 rounded-md px-2 py-1 text-xs"
+              >
+                {isPositive && <ArrowUp className="h-4 w-4" />}
+                {isNegative && <ArrowDown className="h-4 w-4" />}
+                Progress {""}
+                {isPositive
+                  ? `naik ${progress.progress_percentage}%`
+                  : isNegative
+                    ? `turun ${Math.abs(progress.progress_percentage)}%`
+                    : `stabil`}
+              </Badge>
+            </CardHeader>
 
-              <CardContent className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="text-left">
-                    <p className="text-muted-foreground text-sm">Berat Awal</p>
-                    <p className="text-xl font-bold">
-                      {progress.weight_start} kg
-                    </p>
-                  </div>
-                  <div className="text-end">
-                    <p className="text-muted-foreground text-sm">Berat Akhir</p>
-                    <p className="text-foreground text-xl font-bold">
-                      {progress.weight_end} kg
-                    </p>
-                  </div>
+            <CardContent className="space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="text-left">
+                  <p className="text-muted-foreground text-sm">Berat Awal</p>
+                  <p className="text-xl font-bold">
+                    {progress.weight_start} kg
+                  </p>
                 </div>
+                <div className="text-end">
+                  <p className="text-muted-foreground text-sm">Berat Akhir</p>
+                  <p className="text-foreground text-xl font-bold">
+                    {progress.weight_end} kg
+                  </p>
+                </div>
+              </div>
 
-                <div>
-                  <Progress
-                    value={
-                      isPositive
-                        ? Math.min(progress.progress_percentage, 100)
-                        : 0
-                    }
-                    className="h-2"
-                  />
-                </div>
-              </CardContent>
-            </Card>
-          </Link>
+              <div>
+                <Progress
+                  value={
+                    isPositive ? Math.min(progress.progress_percentage, 100) : 0
+                  }
+                  className="h-2"
+                />
+              </div>
+            </CardContent>
+          </Card>
         );
       })}
     </div>
